@@ -56,11 +56,58 @@ python src/train.py --data_dir dataset/train --epochs 10 --batch_size 32
 - `--output`: Model save path (default: `models/saved_model`)
 - `--fine_tune`: Number of layers to fine-tune (default: `0`)
 
+### Fine-Tuning the Model (Recommended for Better Accuracy)
+
+Fine-tuning unfreezes the last layers of the pre-trained MobileNetV2 model, allowing it to adapt specifically to crop disease features. This significantly improves accuracy.
+
+#### Step 1: Initial Training (if not done)
+```bash
+python src/train.py --epochs 10 --batch_size 32
+```
+
+#### Step 2: Fine-Tune the Model
+```bash
+python src/train.py --fine_tune 50 --epochs 10
+```
+
+This will:
+- Load your existing trained model
+- Unfreeze the last 50 layers of MobileNetV2
+- Continue training with a lower learning rate (1e-5)
+- Save the improved model back to `models/saved_model`
+
+#### Fine-Tuning Tips
+
+**Recommended configurations:**
+
+**Quick fine-tuning** (faster, good results):
+```bash
+python src/train.py --fine_tune 30 --epochs 5
+```
+
+**Aggressive fine-tuning** (best accuracy, takes longer):
+```bash
+python src/train.py --fine_tune 100 --epochs 15
+```
+
+**With larger images** (more details, requires more GPU memory):
+```bash
+python src/train.py --fine_tune 50 --epochs 10 --image_size 384
+```
+
+**Best Practices:**
+- Always do initial training first (without `--fine_tune`)
+- Use smaller learning rates for fine-tuning (automatically set to 1e-5)
+- Fine-tuning typically requires fewer epochs (5-15)
+- Monitor validation accuracy to avoid overfitting
+- More layers fine-tuned = better accuracy but slower training
+
 ### Testing the Model
 
 ```bash
 python src/test.py --data_dir dataset/test --model_path models/saved_model
 ```
+
 
 ## 🌐 API Usage
 
