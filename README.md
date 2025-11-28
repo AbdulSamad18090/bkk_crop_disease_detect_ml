@@ -76,7 +76,7 @@ This will:
 - Continue training with a lower learning rate (1e-5)
 - Save the improved model back to `models/saved_model`
 
-#### Fine-Tuning Tips 
+#### Fine-Tuning Tips
 
 **Recommended configurations:**
 
