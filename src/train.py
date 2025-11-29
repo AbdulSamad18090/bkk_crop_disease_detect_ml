@@ -85,17 +85,25 @@ def main():
     # Optional fine-tuning
     if args.fine_tune > 0:
         print(f"Fine-tuning last {args.fine_tune} layers")
-        base_model = model.layers[2]  # base_model is the 3rd layer in this structure
-        base_model.trainable = True
-        for layer in base_model.layers[:-args.fine_tune]:
-            layer.trainable = False
+        base_model = None
+        for layer in model.layers:
+            if isinstance(layer, tf.keras.Model):
+                base_model = layer
+                break
 
-        model.compile(
-            optimizer=tf.keras.optimizers.Adam(1e-5),
-            loss="sparse_categorical_crossentropy",
-            metrics=["accuracy"]
-        )
-        model.fit(train_ds, validation_data=val_ds, epochs=3)
+        if base_model:
+            base_model.trainable = True
+            for layer in base_model.layers[:-args.fine_tune]:
+                layer.trainable = False
+
+            model.compile(
+                optimizer=tf.keras.optimizers.Adam(1e-5),
+                loss="sparse_categorical_crossentropy",
+                metrics=["accuracy"]
+            )
+            model.fit(train_ds, validation_data=val_ds, epochs=3)
+        else:
+            print("Could not find base model layer. Skipping fine-tuning.")
 
     # Save model
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
