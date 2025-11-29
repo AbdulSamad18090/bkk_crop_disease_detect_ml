@@ -32,7 +32,9 @@ async def load_model():
     if os.path.exists(MODEL_PATH):
         print(f"Loading model from {MODEL_PATH}...")
         try:
-            model = tf.keras.models.load_model(MODEL_PATH)
+            # Load model without compiling (we only need it for inference)
+            # This avoids optimizer-related errors when loading
+            model = tf.keras.models.load_model(MODEL_PATH, compile=False)
             print("Model loaded successfully.")
         except Exception as e:
             print(f"Error loading model: {e}")
