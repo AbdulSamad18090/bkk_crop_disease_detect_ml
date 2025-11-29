@@ -31,7 +31,7 @@ def test_api():
             return
 
         # Find a test image
-        test_dir = "dataset/test"
+        test_dir = "dataset/plantCity/test"
         image_path = None
         for root, dirs, files in os.walk(test_dir):
             for file in files:
@@ -42,7 +42,7 @@ def test_api():
                 break
         
         if not image_path:
-            print("No test image found in dataset/test")
+            print("No test image found in dataset/plantCity/test")
             return
 
         print(f"Testing with image: {image_path}")

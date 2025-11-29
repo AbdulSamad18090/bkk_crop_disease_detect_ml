@@ -6,7 +6,7 @@ import tensorflow as tf
 
 def get_args():
     p = argparse.ArgumentParser(description="Train a crop disease classifier using transfer learning")
-    p.add_argument("--data_dir", default="dataset/train", help="Path to training dataset directory (organized by class)")
+    p.add_argument("--data_dir", default="dataset/plantCity/train", help="Path to training dataset directory (organized by class)")
     p.add_argument("--epochs", type=int, default=5)
     p.add_argument("--batch_size", type=int, default=32)
     p.add_argument("--image_size", type=int, default=224, help="Square image size (e.g. 224)")

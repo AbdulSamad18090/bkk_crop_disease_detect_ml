@@ -45,11 +45,11 @@ pip install -r requirements.txt
 ### Training the Model
 
 ```bash
-python src/train.py --data_dir dataset/train --epochs 10 --batch_size 32
+python src/train.py --data_dir dataset/plantCity/train --epochs 10 --batch_size 32
 ```
 
 **Options:**
-- `--data_dir`: Path to training dataset (default: `dataset/train`)
+- `--data_dir`: Path to training dataset (default: `dataset/plantCity/train`)
 - `--epochs`: Number of training epochs (default: `5`)
 - `--batch_size`: Batch size (default: `32`)
 - `--image_size`: Input image size (default: `224`)
@@ -105,7 +105,7 @@ python src/train.py --fine_tune 50 --epochs 10 --image_size 384
 ### Testing the Model
 
 ```bash
-python src/test.py --data_dir dataset/test --model_path models/saved_model
+python src/test.py --data_dir dataset/plantCity/test --model_path models/saved_model
 ```
 
 

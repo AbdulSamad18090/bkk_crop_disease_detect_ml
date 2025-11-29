@@ -4,7 +4,7 @@ import tensorflow as tf
 
 def get_args():
     p = argparse.ArgumentParser(description="Test the trained crop disease classifier")
-    p.add_argument("--data_dir", default="dataset/test", help="Path to test dataset directory")
+    p.add_argument("--data_dir", default="dataset/plantCity/test", help="Path to test dataset directory")
     p.add_argument("--batch_size", type=int, default=32)
     p.add_argument("--image_size", type=int, default=224, help="Square image size (e.g. 224)")
     p.add_argument("--model_path", default="models/saved_model", help="Path to the saved model")
