@@ -124,14 +124,47 @@ def main():
         raise SystemExit(f"Data directory not found: {args.data_dir}")
 
     # -----------------------------
-    # 🔥 DATA TRANSFORMS
+    # 🔥 DATA TRANSFORMS (Aggressive augmentation for real-world images)
     # -----------------------------
+    # These augmentations help the model generalize from white-background
+    # centered images to real-world photos with varied backgrounds/lighting
     train_transform = transforms.Compose([
-        transforms.Resize((args.image_size, args.image_size)),
-        transforms.RandomHorizontalFlip(),
-        transforms.RandomRotation(10),
+        # Resize slightly larger, then random crop (simulates non-centered leaves)
+        transforms.Resize((args.image_size + 32, args.image_size + 32)),
+        transforms.RandomCrop(args.image_size),
+
+        # Geometric transforms
+        transforms.RandomHorizontalFlip(p=0.5),
+        transforms.RandomVerticalFlip(p=0.3),
+        transforms.RandomRotation(30),
+        transforms.RandomAffine(
+            degrees=15,
+            translate=(0.1, 0.1),
+            scale=(0.85, 1.15),
+            shear=10
+        ),
+        transforms.RandomPerspective(distortion_scale=0.2, p=0.3),
+
+        # Color/lighting transforms (handles outdoor lighting variations)
+        transforms.ColorJitter(
+            brightness=0.4,
+            contrast=0.4,
+            saturation=0.4,
+            hue=0.1
+        ),
+
+        # Blur (simulates camera focus issues, motion blur)
+        transforms.GaussianBlur(kernel_size=5, sigma=(0.1, 2.0)),
+
+        # Occasionally convert to grayscale (robustness to color shifts)
+        transforms.RandomGrayscale(p=0.05),
+
+        # Convert to tensor and normalize
         transforms.ToTensor(),
-        transforms.Normalize([0.485,0.456,0.406],[0.229,0.224,0.225])
+        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+
+        # Random erasing (simulates occlusions, partial leaf views)
+        transforms.RandomErasing(p=0.2, scale=(0.02, 0.2), ratio=(0.3, 3.3))
     ])
 
     val_transform = transforms.Compose([

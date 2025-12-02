@@ -1,0 +1,61 @@
+Overall Accuracy: 0.9645 (96.45%)
+
+Classification Report:
+                                 precision    recall  f1-score   support
+
+               Apple Brown_spot       0.99      1.00      0.99       265
+                   Apple Normal       1.00      0.99      1.00       206
+               Apple black_spot       0.99      0.99      0.99       102
+                 Apricot Normal       1.00      0.99      1.00       163
+    Apricot blight leaf disease       0.99      0.98      0.98        90
+              Apricot shot_hole       1.00      1.00      1.00       208
+       Bean Fungal_leaf disease       1.00      0.99      1.00       194
+               Bean Normal leaf       0.99      0.95      0.97       223
+           Bean bean rust image       0.98      1.00      0.99       124
+                 Bean shot_hole       0.85      0.99      0.92        98
+             Cherry Leaf Scorch       0.99      0.98      0.98       282
+             Cherry Normal leaf       0.97      0.93      0.95       125
+              Cherry brown_spot       0.98      0.98      0.98       242
+        Cherry purple leaf spot       1.00      1.00      1.00       240
+       Cherry_shot hole disease       0.96      0.97      0.97       110
+               Corn Fungal leaf       0.97      1.00      0.98        83
+               Corn Normal leaf       0.97      1.00      0.98       142
+            Corn gray leaf spot       1.00      0.95      0.97       132
+         Corn holcus_ leaf spot       1.00      0.99      1.00       108
+        Fig Blight_leaf disease       0.95      0.97      0.96       191
+                 Fig Brown spot       0.98      0.94      0.96       107
+                Fig normal leaf       1.00      0.99      0.99       150
+                  Fig_rust leaf       0.88      0.98      0.93       125
+         Grape Anthracnose leaf       0.91      0.90      0.91       249
+          Grape Brown spot leaf       0.95      0.85      0.90       160
+        Grape Downy mildew leaf       0.90      0.95      0.93       155
+       Grape Mites_leaf disease       1.00      1.00      1.00       125
+              Grape Normal_leaf       0.98      0.98      0.98       372
+      Grape Powdery_mildew leaf       0.94      0.90      0.92       301
+   Grape shot hole leaf disease       0.99      0.99      0.99       213
+              Lokat Normal leaf       0.95      0.99      0.97       129
+ Pear Black spot _ leaf disease       1.00      1.00      1.00       226
+              Pear Normal _leaf       1.00      1.00      1.00       191
+               Pear fire blight       0.99      1.00      0.99        95
+Walnut Anthracnose_leaf disease       0.98      1.00      0.99       162
+     Walnut Blotch_leaf disease       0.99      0.97      0.98       339
+             Walnut Normal_leaf       0.95      0.99      0.97       178
+               Walnut Shot_hole       0.97      0.94      0.96       231
+          Walnut leaf gall mite       0.89      0.95      0.92        98
+                lokat Leaf_spot       0.99      0.97      0.98       198
+          persimmons Brown_spot       1.00      1.00      1.00       166
+           tomato Fusarium Wilt       0.99      0.98      0.98        89
+            tomato spider mites       0.85      0.94      0.90       127
+       tomato verticillium wilt       0.91      1.00      0.95       105
+          tomato_bacterial_spot       0.98      0.95      0.96       400
+            tomato_early_blight       0.93      0.86      0.89       400
+            tomato_healthy_leaf       0.91      0.94      0.93       400
+             tomato_late_blight       0.96      0.88      0.92       294
+               tomato_leaf_curl       0.99      0.99      0.99       413
+              tomato_leaf_miner       0.91      0.96      0.93       400
+               tomato_leaf_mold       0.96      0.97      0.97       400
+           tomato_septoria_leaf       0.98      0.99      0.99       341
+
+                       accuracy                           0.96     10667
+                      macro avg       0.96      0.97      0.97     10667
+                   weighted avg       0.97      0.96      0.96     10667
